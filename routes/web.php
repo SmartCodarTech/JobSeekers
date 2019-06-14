@@ -12,5 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('dashboard');
+})->middleware('auth');
+
+Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@index');
+// Route::get('/system-management/{option}', 'SystemMgmtController@index');
+Route::get('/profile', 'ProfileController@index');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
